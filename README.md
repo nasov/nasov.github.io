@@ -25,7 +25,7 @@ This is a maintenance repository for nasovvv.org, a musician's website that deli
 
 ## ⚠️ Important Notes
 
-- This site was built before smartphones were a thing, and we're keeping it that way
+- This site was built with FrontPage, a tool that became obsolete before smartphones existed
 - We maintain the original FrontPage structure for historical accuracy
 - Yes, we know about modern web development. No, we don't want it
 - The `_vti_cnf` folders are FrontPage artifacts - leave them be
