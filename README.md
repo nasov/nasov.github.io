@@ -16,10 +16,12 @@ This is a maintenance repository for nasovvv.org, a musician's website that deli
 
 ## 🛠️ Maintenance Instructions
 
-1. Clone this repository
-2. Make your changes to the HTML files
-3. Commit and push to main branch
-4. GitHub Pages will automatically deploy the updates
+1. Navigate to the file you want to edit on GitHub
+2. Click the pencil icon (Edit this file)
+3. Make your changes in the editor
+4. Add a meaningful commit message
+5. Click "Commit changes"
+6. Wait a few minutes for GitHub Pages to deploy
 
 ## ⚠️ Important Notes
 
@@ -32,17 +34,6 @@ This is a maintenance repository for nasovvv.org, a musician's website that deli
 
 As stated in our manifesto:
 > "In response to a world that heavily relies on images to convey messages, nasovvv.org employs words, and it does for a reason. Such is its peculiarity."
-
-## 🤝 Contributing
-
-Before making any changes, please remember:
-1. Respect the existing HTML structure
-2. Maintain the intentionally vintage aesthetic
-3. When in doubt, add more words
-
-## 📝 License
-
-All rights reserved. Please contact the repository owner for any usage permissions.
 
 ---
 *This website is not optimised for anything, and that's exactly how we like it.*
