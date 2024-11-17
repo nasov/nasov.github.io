@@ -1,61 +1,24 @@
-name: Deploy Preview
+# .github/workflows/preview.yml
+name: Deploy PR previews
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-  pull-requests: write
-
-concurrency:
-  group: "preview-${{ github.event.number }}"
-  cancel-in-progress: true
+concurrency: preview-${{ github.ref }}
 
 jobs:
   deploy-preview:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Deploy preview
+        uses: rossjrw/pr-preview-action@v1
         with:
-          lfs: true
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Create preview branch
-        run: |
-          git checkout -b preview-${{ github.event.number }}
-          git push origin preview-${{ github.event.number }} -f
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "public"
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          branch: preview-${{ github.event.number }}
-
-      - name: Comment PR
-        uses: actions/github-script@v7
-        if: success()
-        with:
-          script: |
-            const branchName = 'preview-${{ github.event.number }}';
-            const repoName = context.repo.repo;
-            const previewUrl = `https://${context.repo.owner}.github.io/${repoName}--${branchName}/`;
-            const message = `✨ Preview deployment is ready! Visit: ${previewUrl}`;
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: message
-            });
+          source-dir: ./public
